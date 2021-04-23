@@ -45,3 +45,19 @@ dicCopy['aa']['name']='mandy'
 
 print(dic2)
 print("複製的",dicCopy)
+
+
+# 排序
+# sorted(可迭代對象,key=排序方式)
+dic ={'kelseyaya': 13, 'toykoya': 1, 'MegaWinner': 1, 'chacha200623': 1, 'Gary5566': 1, 'Boss741108': 4, 'vincent1985': 5, 'vincentsoon': 1, 'IzumiKonata': 1, 'cjrmt': 1, 'Ga1axyNote7': 1, 'AliasKuo': 7, 'lude71': 2, 'timsb': 1, 'ClownT': 1, 'graperson': 1, 'Iwanz': 1, 'qaz442002': 1, 'gve50714': 2, 'ryanworld': 1, 'james7923': 1}
+
+print(dic.items()) # 返回一個list ，每個元素為tuple (key,value)
+#[('AliasKuo', 7), ('Boss741108', 4), ('ClownT', 1), ('Ga1axyNote7', 1), ('Gary5566', 1), ('Iwanz', 1), ('IzumiKonata', 1), ('MegaWinner', 1), ('chacha200623', 1), ('cjrmt', 1), ('graperson', 1), ('gve50714', 2), ('james7923', 1), ('kelseyaya', 13), ('lude71', 2), ('qaz442002', 1), ('ryanworld', 1), ('timsb', 1), ('toykoya', 1), ('vincent1985', 5), ('vincentsoon', 1)]
+
+# lambda 語法:lambda 參數列表: 返回值
+
+# 按照key 排序
+# 加負號代表 倒敘
+print(sorted(dic.items(),key=lambda d:-d[0]))
+# 按照value 排序
+print(sorted(dic.items(),key=lambda d:-d[1]))

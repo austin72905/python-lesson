@@ -68,7 +68,7 @@ print(c2.name)
 class Myclass3:
     name="悟空"
     #方法沒辦法直接訪問屬性
-    def sayHi(lan):
+    def sayHi(self):
         print("早安")
 
 c3 = Myclass3()
