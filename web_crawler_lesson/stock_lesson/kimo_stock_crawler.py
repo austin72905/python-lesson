@@ -2,6 +2,11 @@ import requests
 import bs4
 import pandas as pd
 
+# 說明
+# 1. 主要執行方法 是 main() => 去調用 excuteCrawler() => excuteCrawler 裡面在去調用其他方法
+# 2. printResult 只是打印，可以不用理他
+# 3. 我是用 bs4 解析 html element ， selenium 套件應該也是有相同功能，可以去查查
+
 
 # 爬取網頁內容
 def getHTMLText(url: str, headers: dict) -> str:
@@ -18,7 +23,7 @@ def getHTMLText(url: str, headers: dict) -> str:
 
 
 # 解析內容
-def paresContent(content: str):
+def parseContent(content: str) -> list:
     # bs4 套件裡的方法，用這個方法解析出的soup 物件，可以分析html的標籤文字(tag)
     soup = bs4.BeautifulSoup(content, 'html.parser')
     # 裝每支股票排名資料 的list
@@ -127,12 +132,12 @@ def printResult(slist):
                             info['成交張數'], info['持股張數'], info['持股比率']))
 
 
-def excuteCrawler(url, headers):
+def excuteCrawler(url: str, headers: dict):
 
     # 爬取網頁內容
     content = getHTMLText(url, headers)
     # 解析
-    slist = paresContent(content)
+    slist = parseContent(content)
 
     # 將slist 理資料 轉成 pandas 可以接收的格式
     arr = []
@@ -158,7 +163,7 @@ def main():
         "投信買賣超排行": "/rank/investment-trust-sell"
     }
 
-    headers: dict = {
+    headers = {
         'User-Agent':
         'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36'
     }
